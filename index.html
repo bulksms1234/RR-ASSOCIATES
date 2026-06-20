@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RR ASSOCIATES · Tax Consultants</title>
+  <!-- Font Awesome Icons (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+      color: #0b1a33;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header & Navigation */
+    header {
+      background: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-placeholder {
+      width: 60px;
+      height: 60px;
+      background: #1a2e4f;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 8px rgba(0,20,40,0.08);
+    }
+
+    .company-name h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #0b1a33;
+      letter-spacing: -0.5px;
+    }
+    .company-name span {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #3b5a7a;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-weight: 500;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #1a2e4f;
+      font-size: 1rem;
+      transition: 0.2s;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #0057a3;
+      border-bottom-color: #0057a3;
+    }
+
+    .nav-links a i {
+      margin-right: 6px;
+      opacity: 0.7;
+    }
+
+    /* Hero / Business Description */
+    .hero {
+      background: linear-gradient(145deg, #ffffff 0%, #f2f6fc 100%);
+      border-radius: 32px;
+      margin: 32px 0 40px;
+      padding: 48px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 8px 24px rgba(0, 30, 60, 0.05);
+    }
+
+    .hero-text {
+      flex: 2 1 300px;
+    }
+
+    .hero-text h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0b1a33;
+      margin-bottom: 12px;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #1f3b5c;
+      max-width: 550px;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #dce7f5;
+      padding: 10px 22px;
+      border-radius: 60px;
+      font-weight: 600;
+      color: #003d7a;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-badge i {
+      margin-right: 10px;
+      color: #0057a3;
+    }
+
+    .contact-card {
+      background: white;
+      border-radius: 24px;
+      padding: 28px 32px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+      flex: 1 1 260px;
+      border: 1px solid rgba(0,60,130,0.06);
+    }
+
+    .contact-card .item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+      font-size: 1rem;
+    }
+
+    .contact-card .item i {
+      width: 28px;
+      color: #0057a3;
+      font-size: 1.2rem;
+    }
+
+    .contact-card .item a {
+      color: #0b1a33;
+      text-decoration: none;
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    .contact-card .item a:hover {
+      color: #0057a3;
+    }
+
+    /* Page sections (pages) */
+    .page-section {
+      display: none;
+      animation: fade 0.25s ease;
+    }
+
+    .page-section.active-page {
+      display: block;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+      margin: 30px 0 20px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 26px 20px;
+      border-radius: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #e9eff5;
+      transition: 0.2s;
+      text-align: center;
+    }
+    .service-card i {
+      font-size: 2.2rem;
+      color: #0057a3;
+      margin-bottom: 12px;
+    }
+    .service-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .legal-card {
+      background: white;
+      padding: 30px 32px;
+      border-radius: 28px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+      border: 1px solid #e2ebf5;
+      margin: 30px 0;
+    }
+
+    .legal-card h2 {
+      font-size: 1.8rem;
+      border-bottom: 2px solid #dce7f5;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    .legal-card h3 {
+      margin: 24px 0 10px;
+      color: #003366;
+    }
+
+    .legal-card ul {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+
+    .legal-card li {
+      margin-bottom: 8px;
+    }
+
+    .contact-page-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin: 30px 0;
+    }
+
+    .contact-info-box {
+      flex: 1 1 260px;
+      background: white;
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid #e2ebf5;
+    }
+
+    .contact-info-box .item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .contact-info-box .item i {
+      width: 32px;
+      font-size: 1.4rem;
+      color: #0057a3;
+    }
+
+    .copyright-footer {
+      margin: 50px 0 20px;
+      padding: 24px 0 16px;
+      border-top: 1px solid #dce4ed;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      color: #3b5a7a;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a {
+      color: #1a2e4f;
+      text-decoration: none;
+      margin-left: 24px;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: #0057a3;
+    }
+
+    /* responsive */
+    @media (max-width: 700px) {
+      .header-flex {
+        flex-direction: column;
+        align-items: start;
+        gap: 12px;
+      }
+      .nav-links {
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .hero {
+        padding: 30px 20px;
+      }
+      .hero-text h2 {
+        font-size: 1.8rem;
+      }
+      .contact-card {
+        margin-top: 20px;
+        width: 100%;
+      }
+      .footer-links a {
+        margin-left: 12px;
+      }
+    }
+
+    /* small */
+    .text-muted {
+      color: #4b6b8a;
+    }
+    .mt-2 { margin-top: 12px; }
+    .mb-1 { margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-flex">
+      <div class="logo-area">
+        <div class="logo-placeholder">RR</div>
+        <div class="company-name">
+          <h1>RR ASSOCIATES</h1>
+          <span><i class="fas fa-briefcase"></i> TAX CONSULTANTS</span>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-link active" data-page="home"><i class="fas fa-home"></i> Home</a>
+        <a href="#" class="nav-link" data-page="contact"><i class="fas fa-phone-alt"></i> Contact</a>
+        <a href="#" class="nav-link" data-page="privacy"><i class="fas fa-shield-alt"></i> Privacy</a>
+        <a href="#" class="nav-link" data-page="terms"><i class="fas fa-file-contract"></i> Terms</a>
+        <a href="#" class="nav-link" data-page="copyright"><i class="far fa-copyright"></i> Copyright</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HOME PAGE (default) -->
+    <section id="page-home" class="page-section active-page">
+      <div class="hero">
+        <div class="hero-text">
+          <h2>Trusted Tax Consultants</h2>
+          <p>Expert guidance for individuals &amp; businesses. <br>RR ASSOCIATES — where clarity meets compliance.</p>
+          <div class="hero-badge">
+            <i class="fas fa-map-pin"></i> B-45, TULIP ENCLAVE, CENTRAL SPINE, VIDHYADHAR NAGAR, JAIPUR - 302039
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="item"><i class="fas fa-envelope"></i> <a href="mailto:RRASSOCIATESJPR@GMAIL.COM">RRASSOCIATESJPR@GMAIL.COM</a></div>
+          <div class="item"><i class="fas fa-phone-alt"></i> <a href="tel:+919887837862">9887837862</a></div>
+          <div class="item"><i class="fas fa-map-marker-alt"></i> <span>B-45, TULIP ENCLAVE, CENTRAL SPINE, VIDHYADHAR NAGAR, JAIPUR - 302039</span></div>
+          <div style="margin-top: 12px; font-size:0.9rem; color:#1f4a7a;"><i class="fas fa-check-circle" style="color:#1f8b4c;"></i> Tax planning · GST · ITR · TDS</div>
+        </div>
+      </div>
+
+      <h2 style="margin: 20px 0 8px; font-size: 1.6rem;">Our Services</h2>
+      <div class="card-grid">
+        <div class="service-card"><i class="fas fa-file-invoice"></i><h3>Income Tax</h3><p class="text-muted">Return filing, planning &amp; assessments</p></div>
+        <div class="service-card"><i class="fas fa-building"></i><h3>GST Compliance</h3><p class="text-muted">Registration, returns &amp; advisory</p></div>
+        <div class="service-card"><i class="fas fa-calculator"></i><h3>TDS &amp; TCS</h3><p class="text-muted">Deduction, deposit &amp; returns</p></div>
+        <div class="service-card"><i class="fas fa-chart-line"></i><h3>Business Advisory</h3><p class="text-muted">Strategic tax planning for growth</p></div>
+      </div>
+      <p style="margin: 20px 0 10px; color: #1f3b5c;">Over a decade of experience — serving Jaipur and beyond.</p>
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section id="page-contact" class="page-section">
+      <h2 style="font-size: 2rem; margin-bottom: 10px;">Contact Us</h2>
+      <p style="color: #2a4b70; margin-bottom: 24px;">We’re here to help. Reach out through any of the channels below.</p>
+      <div class="contact-page-grid">
+        <div class="contact-info-box">
+          <div class="item"><i class="fas fa-envelope"></i> <div><strong>Email</strong><br><a href="mailto:RRASSOCIATESJPR@GMAIL.COM" style="color:#0b1a33;">RRASSOCIATESJPR@GMAIL.COM</a></div></div>
+          <div class="item"><i class="fas fa-phone-alt"></i> <div><strong>Phone</strong><br><a href="tel:+919887837862" style="color:#0b1a33;">9887837862</a></div></div>
+          <div class="item"><i class="fas fa-map-marker-alt"></i> <div><strong>Office</strong><br>B-45, TULIP ENCLAVE, CENTRAL SPINE, VIDHYADHAR NAGAR, JAIPUR - 302039, RAJASTHAN</div></div>
+          <div class="item"><i class="fas fa-clock"></i> <div><strong>Working Hours</strong><br>Mon–Sat: 10:00 AM – 6:00 PM</div></div>
+        </div>
+        <div style="flex:2; min-width:220px; background: #eaf0f8; border-radius: 28px; padding: 28px; border:1px solid #d3e0ed;">
+          <h3 style="margin-bottom: 12px;"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Quick Connect</h3>
+          <p>For queries, appointments, or documents, please email or call us. We respond within 24 hours.</p>
+          <div style="background: white; border-radius: 60px; padding: 14px 20px; margin-top: 20px; display:inline-block; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+            <i class="fas fa-phone" style="color:#0057a3; margin-right: 10px;"></i> <strong>+91 98878 37862</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY POLICY -->
+    <section id="page-privacy" class="page-section">
+      <div class="legal-card">
+        <h2><i class="fas fa-shield-alt" style="margin-right: 12px; color:#0057a3;"></i>Privacy Policy</h2>
+        <p><strong>Last updated:</strong> June 2026</p>
+        <p>RR ASSOCIATES (“we”, “our”, “us”) respects your privacy. This policy describes how we collect, use, and protect your personal information.</p>
+        <h3>1. Information we collect</h3>
+        <p>We may collect contact details (name, email, phone), financial information relevant to tax services, and any other data you provide voluntarily.</p>
+        <h3>2. How we use information</h3>
+        <ul>
+          <li>To provide tax consultancy and compliance services.</li>
+          <li>To communicate with you about appointments, updates, or legal requirements.</li>
+          <li>To improve our services and client experience.</li>
+        </ul>
+        <h3>3. Data security</h3>
+        <p>We implement reasonable security measures to protect your data. However, no electronic transmission is 100% secure.</p>
+        <h3>4. Sharing</h3>
+        <p>We do not sell or rent personal data. We may share data with regulatory authorities as required by law.</p>
+        <h3>5. Contact</h3>
+        <p>For any privacy questions, email us at RRASSOCIATESJPR@GMAIL.COM</p>
+      </div>
+    </section>
+
+    <!-- TERMS & CONDITIONS -->
+    <section id="page-terms" class="page-section">
+      <div class="legal-card">
+        <h2><i class="fas fa-file-contract" style="margin-right: 12px; color:#0057a3;"></i>Terms &amp; Conditions</h2>
+        <p><strong>Effective:</strong> June 2026</p>
+        <p>By using the services of RR ASSOCIATES, you agree to the following terms.</p>
+        <h3>1. Scope of services</h3>
+        <p>We provide tax consultancy, return filing, GST, TDS, and related advisory. Services are rendered based on information provided by the client.</p>
+        <h3>2. Client responsibilities</h3>
+        <ul>
+          <li>Provide accurate and complete information in a timely manner.</li>
+          <li>Retain copies of all documents submitted to us.</li>
+          <li>Comply with tax laws and deadlines; we are not liable for penalties due to client delay or misinformation.</li>
+        </ul>
+        <h3>3. Fees &amp; payment</h3>
+        <p>Fees are communicated upfront. Payment terms are specified in the engagement letter. Late payments may incur interest.</p>
+        <h3>4. Limitation of liability</h3>
+        <p>Our liability is limited to the fee paid for the specific service. We are not liable for indirect or consequential losses.</p>
+        <h3>5. Governing law</h3>
+        <p>These terms are governed by the laws of India, and any disputes shall be subject to the jurisdiction of courts in Jaipur.</p>
+        <p>For any questions, contact us at RRASSOCIATESJPR@GMAIL.COM</p>
+      </div>
+    </section>
+
+    <!-- COPYRIGHT PAGE -->
+    <section id="page-copyright" class="page-section">
+      <div class="legal-card">
+        <h2><i class="far fa-copyright" style="margin-right: 12px; color:#0057a3;"></i>Copyright Notice</h2>
+        <p><strong>© RR ASSOCIATES</strong> — All rights reserved.</p>
+        <p>All content, including text, graphics, logos, and service marks, is the property of RR ASSOCIATES or its licensors and is protected by Indian and international copyright laws.</p>
+        <h3>Permitted use</h3>
+        <p>You may view, download, and print pages for personal, non-commercial reference. You may not republish, reproduce, or distribute any material without prior written consent.</p>
+        <h3>Logo &amp; branding</h3>
+        <p>The RR ASSOCIATES name and logo are registered trademarks. Unauthorized use is prohibited.</p>
+        <h3>Contact for permissions</h3>
+        <p>For permission requests, write to: RRASSOCIATESJPR@GMAIL.COM</p>
+        <p style="margin-top: 20px; background: #eef4fa; padding: 16px; border-radius: 16px;"><i class="fas fa-info-circle"></i> This website and its content are provided for general information purposes only and do not constitute professional advice.</p>
+      </div>
+    </section>
+
+    <!-- FOOTER / COPYRIGHT BAR -->
+    <div class="copyright-footer">
+      <div>
+        <i class="far fa-copyright"></i> 2026 RR ASSOCIATES · TAX CONSULTANTS · JAIPUR
+      </div>
+      <div class="footer-links">
+        <a href="#" class="nav-link" data-page="privacy">Privacy</a>
+        <a href="#" class="nav-link" data-page="terms">Terms</a>
+        <a href="#" class="nav-link" data-page="copyright">Copyright</a>
+        <a href="#" class="nav-link" data-page="contact">Contact</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function() {
+      // All nav links (header + footer)
+      const navLinks = document.querySelectorAll('.nav-link');
+      const pages = {
+        home: document.getElementById('page-home'),
+        contact: document.getElementById('page-contact'),
+        privacy: document.getElementById('page-privacy'),
+        terms: document.getElementById('page-terms'),
+        copyright: document.getElementById('page-copyright')
+      };
+
+      function setActivePage(pageId) {
+        // Hide all
+        Object.keys(pages).forEach(key => {
+          pages[key].classList.remove('active-page');
+        });
+        // Show selected
+        if (pages[pageId]) {
+          pages[pageId].classList.add('active-page');
+        }
+        // update nav active class
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.dataset.page === pageId) {
+            link.classList.add('active');
+          }
+        });
+        // scroll to top on page change (optional)
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Click handler
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const page = this.dataset.page;
+          if (page) setActivePage(page);
+        });
+      });
+
+      // Set default (home) – already active, but ensure consistency
+      // If hash in URL ?page=privacy etc
+      const hash = window.location.hash.replace('#', '');
+      if (hash && pages[hash]) {
+        setActivePage(hash);
+      } else {
+        // ensure home active if no hash
+        setActivePage('home');
+      }
+    })();
+  </script>
+</body>
+</html>
+```
